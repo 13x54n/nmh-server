@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userRoutes");
 const adminRouter = require("./routes/adminRoutes");
+const productRouter = require("./routes/productRoutes");
 require("dotenv").config();
 
 const app = express();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/product", productRouter);
 
 const port = process.env.PORT || 3000;
 
