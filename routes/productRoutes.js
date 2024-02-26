@@ -29,6 +29,8 @@ productRouter.post("/", upload.single("image"), async (req, res) => {
   try {
     const { name, price, description, options, category } = req.body;
 
+    console.log(req.body)
+
     // Create product object
     const product = new Product({
       name,
