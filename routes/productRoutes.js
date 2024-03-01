@@ -29,15 +29,13 @@ productRouter.post("/", upload.single("image"), async (req, res) => {
   try {
     const { name, price, description, options, category } = req.body;
 
-    console.log(req.body)
-
     // Create product object
     const product = new Product({
       name,
       price,
       description,
-      options,
-      category,
+      options: JSON.parse(options),
+      category: JSON.parse(category),
       imageSrc: req.file.path,
       imageAlt: req.file.originalname,
     });
@@ -47,7 +45,7 @@ productRouter.post("/", upload.single("image"), async (req, res) => {
 
     res.status(201).json(createdProduct);
   } catch (error) {
-    res.status(500).json({ error: "Failed to create product" });
+    res.status(500).json({ error });
   }
 });
 

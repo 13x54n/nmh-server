@@ -23,9 +23,12 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  options: Array,
+  options: {
+    type: Array,
+    required: true,
+  },
   category: {
-    type: String,
+    type: Object,
     required: true,
   },
   stock: {
