@@ -77,7 +77,7 @@ productRouter.get("/:id", async (req, res) => {
 // Update a product by ID
 productRouter.put("/:id", upload.single("image"), async (req, res) => {
   try {
-    const { name, price, description, options, category } = req.body;
+    const { name, price, description, options, category, stock } = req.body;
 
     // Find the product by ID
     const product = await Product.findById(req.params.id);
@@ -92,6 +92,7 @@ productRouter.put("/:id", upload.single("image"), async (req, res) => {
     product.description = description;
     product.options = options;
     product.category = category;
+    product.stock = stock;
 
     if (req.file) {
       // Delete current image from Cloudinary
